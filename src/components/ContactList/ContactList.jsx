@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ContactListItem from './ContactListItem';
 
 const ContactList = ({ contacts, onDeleteContact }) =>
-  contacts && (
+  contacts.length > 0 && (
     <ul>
       {contacts.map(({ id, name, number }) => (
         <ContactListItem
