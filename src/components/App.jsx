@@ -17,6 +17,14 @@ class App extends Component {
 
   addContact = ({ name, number }) => {
     const { contacts } = this.state;
+    if (
+      contacts.some(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
     const contact = {
       id: uuidv4(),
       name,
@@ -49,7 +57,18 @@ class App extends Component {
     const visibleContacts = this.getVisibleContacts.apply(this);
 
     return (
-      <div>
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: 40,
+          color: '#010101',
+          flexDirection: 'column',
+          listStyle: 'none',
+        }}
+      >
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.addContact} />
 
@@ -65,13 +84,3 @@ class App extends Component {
 }
 
 export default App;
-//         style={{
-//           height: '100vh',
-//           display: 'flex',
-//           justifyContent: 'center',
-//           alignItems: 'center',
-//           fontSize: 40,
-//           color: '#010101',
-//           flexDirection: 'column',
-//           listStyle: 'none',
-//         }}

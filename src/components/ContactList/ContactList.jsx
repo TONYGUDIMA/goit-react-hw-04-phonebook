@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 
 import ContactListItem from './ContactListItem';
 
-const ContactList = ({ contacts, onDeleteContact }) => (
-  <ul>
-    {contacts.map(({ id, name, number }) => (
-      <ContactListItem
-        key={id}
-        name={name}
-        number={number}
-        onDelete={() => onDeleteContact(id)}
-      />
-    ))}
-  </ul>
-);
+const ContactList = ({ contacts, onDeleteContact }) =>
+  contacts && (
+    <ul>
+      {contacts.map(({ id, name, number }) => (
+        <ContactListItem
+          key={id}
+          name={name}
+          number={number}
+          onDelete={() => onDeleteContact(id)}
+        />
+      ))}
+    </ul>
+  );
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
